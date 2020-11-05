@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoKaartGenerator", "BingoKaartGenerator\BingoKaartGenerator.csproj", "{77A60295-B11E-4DAC-926A-34BBA4B2416B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KluimBingoGUI", "KluimBingoGUI\KluimBingoGUI.csproj", "{5D911732-2451-4250-8361-2818CDA153F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77A60295-B11E-4DAC-926A-34BBA4B2416B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A60295-B11E-4DAC-926A-34BBA4B2416B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A60295-B11E-4DAC-926A-34BBA4B2416B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A60295-B11E-4DAC-926A-34BBA4B2416B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D911732-2451-4250-8361-2818CDA153F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D911732-2451-4250-8361-2818CDA153F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D911732-2451-4250-8361-2818CDA153F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D911732-2451-4250-8361-2818CDA153F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FCCDEDE-4D1E-4241-A3D3-E720FE1F105D}
+	EndGlobalSection
+EndGlobal
