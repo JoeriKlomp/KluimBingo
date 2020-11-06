@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -6,15 +7,17 @@ using System.Windows.Forms;
 
 namespace KluimBingoGUI
 {
-    public partial class Form1 : Form
+    public partial class KluimBingo : Form
     {
         private BingoKaartGenerator.BingoKaartGenerator generator;
         private Color controlColor = Color.FromArgb(255, 240, 240, 240);
+        private List<string> drawnNumbers;
 
-        public Form1()
+        public KluimBingo()
         {
             InitializeComponent();
             generator = new BingoKaartGenerator.BingoKaartGenerator();
+            drawnNumbers = new List<string>();
             checkPresentPdfs();
             setBingoNumbers();
         }
@@ -42,9 +45,15 @@ namespace KluimBingoGUI
             var label = sender as Label;
 
             if (label.BackColor == Color.LightGreen)
+            { 
                 label.BackColor = controlColor;
+                drawnNumbers.Remove(label.Text);
+            }
             else
+            { 
                 label.BackColor = Color.LightGreen;
+                drawnNumbers.Add(label.Text);
+            }
         }
 
         private void checkPresentPdfs()
@@ -73,16 +82,20 @@ namespace KluimBingoGUI
             var person = selectedPdf.Replace(".pdf", "");
             string[] allNumbers = File.ReadAllLines($"Texts\\{person}.txt");
 
-            switch(bingoType)
+            bool result;
+            switch (bingoType)
             {
                 case "1 rijtje":
-                    checkSingleRowBingo(allNumbers, card);
+                    result = checkSingleRowBingo(allNumbers, card);
+                    MessageBox.Show(result.ToString());
                     break;
                 case "2 rijtjes":
-                    checkDoubleRowBingo(allNumbers, card);
+                    result = checkDoubleRowBingo(allNumbers, card);
+                    MessageBox.Show(result.ToString());
                     break;
                 case "Volle kaart":
-                    checkFullCardBingo(allNumbers, card);
+                    result = checkFullCardBingo(allNumbers, card);
+                    MessageBox.Show(result.ToString());
                     break;
             }
         }
@@ -128,22 +141,65 @@ namespace KluimBingoGUI
             }
         }
 
+        private int countBingoRows(string[] cardNumbers) 
+        {
+            int counter = 0;
+
+            //Check alle kolommen
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (!drawnNumbers.Contains(cardNumbers[5 * i + j]))
+                        break;
+                    if (j == 4)
+                        counter++;
+                }
+            }
+
+            //Check alle rijen
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (!drawnNumbers.Contains(cardNumbers[5 * j + i]))
+                        break;
+                    if (j == 4)
+                        counter++;
+                }
+            }
+
+            return counter;
+        }
+
         private bool checkSingleRowBingo(string[] allNumbers, string card)
         {
-            var cardNumbers = getSelectedCardNumbers(card, allNumbers);
-            return true;
+            string[] cardNumbers = getSelectedCardNumbers(card, allNumbers);
+            return countBingoRows(cardNumbers) >= 1;
         }
 
         private bool checkDoubleRowBingo(string[] allNumbers, string card)
         {
             var cardNumbers = getSelectedCardNumbers(card, allNumbers);
-            return true;
+            return countBingoRows(cardNumbers) >= 2;
         }
 
         private bool checkFullCardBingo(string[] allNumbers, string card)
         {
             var cardNumbers = getSelectedCardNumbers(card, allNumbers);
+            for(int i = 0; i < cardNumbers.Length; i++)
+            {
+                if (!drawnNumbers.Contains(cardNumbers[i]))
+                    return false;
+            }
             return true;
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            drawnNumbers = new List<string>();
+            for (int i = 0; i < 75; i++)
+                table1.Controls[i].BackColor = controlColor;
         }
     }
 }

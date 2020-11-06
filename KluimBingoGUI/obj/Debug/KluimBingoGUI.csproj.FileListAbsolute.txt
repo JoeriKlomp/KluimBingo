@@ -14,10 +14,10 @@ C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\bin\Debug\ExcelDataReader.D
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\bin\Debug\Select.Html.dep
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.csprojAssemblyReference.cache
-C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.Form1.resources
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.Properties.Resources.resources
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.csproj.GenerateResource.cache
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.csproj.CoreCompileInputs.cache
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.csproj.CopyComplete
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.exe
 C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.pdb
+C:\Users\joeri\source\repos\KlompBingo\KluimBingoGUI\obj\Debug\KluimBingoGUI.KluimBingo.resources

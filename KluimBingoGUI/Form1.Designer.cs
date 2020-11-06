@@ -1,6 +1,6 @@
 ﻿namespace KluimBingoGUI
 {
-    partial class Form1
+    partial class KluimBingo
     {
         /// <summary>
         /// Required designer variable.
@@ -117,6 +117,7 @@
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.checkBingoButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.table1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -235,7 +236,7 @@
             this.table1.Controls.Add(this.label4, 2, 0);
             this.table1.Controls.Add(this.label3, 1, 0);
             this.table1.Controls.Add(this.label2, 0, 0);
-            this.table1.Location = new System.Drawing.Point(609, 102);
+            this.table1.Location = new System.Drawing.Point(612, 127);
             this.table1.Name = "table1";
             this.table1.RowCount = 15;
             this.table1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.669778F));
@@ -1267,11 +1268,22 @@
             this.checkBingoButton.UseVisualStyleBackColor = true;
             this.checkBingoButton.Click += new System.EventHandler(this.checkBingoButton_Click);
             // 
-            // Form1
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(612, 91);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 7;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // KluimBingo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 655);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.checkBingoButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -1279,8 +1291,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.importedPdfs);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "KluimBingo";
+            this.Text = "KluimBingo";
             this.table1.ResumeLayout(false);
             this.table1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1383,6 +1395,7 @@
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Button checkBingoButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 
