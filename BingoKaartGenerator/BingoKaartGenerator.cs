@@ -24,7 +24,7 @@ namespace BingoKaartGenerator
             converter.Options.PdfPageOrientation = PdfPageOrientation.Portrait;
             converter.Options.WebPageWidth = 0;
 
-            templateHtml = File.ReadAllText("bingo-template.html");
+            templateHtml = File.ReadAllText("Template\\bingo-template.html");
             readExcelSheet();
         }
 
@@ -76,7 +76,7 @@ namespace BingoKaartGenerator
 
         public void readExcelSheet()
         {
-            using (var stream = File.Open("Excel input\\test-excel.xlsx", FileMode.Open, FileAccess.Read))
+            using (var stream = File.Open("Excel\\test-excel.xlsx", FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {

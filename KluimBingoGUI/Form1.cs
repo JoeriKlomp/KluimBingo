@@ -18,6 +18,7 @@ namespace KluimBingoGUI
             InitializeComponent();
             generator = new BingoKaartGenerator.BingoKaartGenerator();
             drawnNumbers = new List<string>();
+            checkDirectories();
             checkPresentPdfs();
             setBingoNumbers();
         }
@@ -67,6 +68,14 @@ namespace KluimBingoGUI
             }
         }
 
+        private void checkDirectories()
+        {
+            if (!Directory.Exists("PDFs"))
+                Directory.CreateDirectory("PDFs");
+            if (!Directory.Exists("Texts"))
+                Directory.CreateDirectory("Texts");
+        }
+
         private void checkBingoButton_Click(object sender, EventArgs e)
         {
             string card = getSelectedCard();
@@ -87,15 +96,15 @@ namespace KluimBingoGUI
             {
                 case "1 rijtje":
                     result = checkSingleRowBingo(allNumbers, card);
-                    MessageBox.Show(result.ToString());
+                    showBingoMessageBox(result);
                     break;
                 case "2 rijtjes":
                     result = checkDoubleRowBingo(allNumbers, card);
-                    MessageBox.Show(result.ToString());
+                    showBingoMessageBox(result);
                     break;
                 case "Volle kaart":
                     result = checkFullCardBingo(allNumbers, card);
-                    MessageBox.Show(result.ToString());
+                    showBingoMessageBox(result);
                     break;
             }
         }
@@ -193,6 +202,14 @@ namespace KluimBingoGUI
                     return false;
             }
             return true;
+        }
+
+        private void showBingoMessageBox(bool result)
+        {
+            if (result)
+                MessageBox.Show("Biiingggooooo! :)");
+            else
+                MessageBox.Show("Valse bingo :(");
         }
 
         private void resetButton_Click(object sender, EventArgs e)
