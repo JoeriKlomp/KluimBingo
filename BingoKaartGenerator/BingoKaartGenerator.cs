@@ -97,33 +97,33 @@ namespace BingoKaartGenerator
                     switch (i)
                     {
                         case 0:
-                            pickedNumber = r.Next(1, 15);
+                            pickedNumber = r.Next(1, 16);
                             while (chosen.Contains(pickedNumber))
-                                pickedNumber = r.Next(1, 15);
+                                pickedNumber = r.Next(1, 16);
                             chosen.Add(pickedNumber);
                             break;
                         case 1:
-                            pickedNumber = r.Next(16, 30);
+                            pickedNumber = r.Next(16, 31);
                             while (chosen.Contains(pickedNumber))
-                                pickedNumber = r.Next(16, 30);
+                                pickedNumber = r.Next(16, 31);
                             chosen.Add(pickedNumber);
                             break;
                         case 2:
-                            pickedNumber = r.Next(31, 45);
+                            pickedNumber = r.Next(31, 46);
                             while (chosen.Contains(pickedNumber))
-                                pickedNumber = r.Next(31, 45);
+                                pickedNumber = r.Next(31, 46);
                             chosen.Add(pickedNumber);
                             break;
                         case 3:
-                            pickedNumber = r.Next(46, 60);
+                            pickedNumber = r.Next(46, 61);
                             while (chosen.Contains(pickedNumber))
-                                pickedNumber = r.Next(46, 60);
+                                pickedNumber = r.Next(46, 61);
                             chosen.Add(pickedNumber);
                             break;
                         case 4:
-                            pickedNumber = r.Next(61, 75);
+                            pickedNumber = r.Next(61, 76);
                             while (chosen.Contains(pickedNumber))
-                                pickedNumber = r.Next(61, 75);
+                                pickedNumber = r.Next(61, 76);
                             chosen.Add(pickedNumber);
                             break;
                     }
