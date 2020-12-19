@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KluimBingoGUI
@@ -16,6 +17,7 @@ namespace KluimBingoGUI
         public KluimBingo()
         {
             InitializeComponent();
+            Application.EnableVisualStyles();
             generator = new BingoKaartGenerator.BingoKaartGenerator();
             drawnNumbers = new List<string>();
             checkDirectories();
@@ -23,10 +25,32 @@ namespace KluimBingoGUI
             setBingoNumbers();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //Blijkbaar mag je async void bij event handlers gebruiken
+        private async void button1_Click(object sender, EventArgs e)
         {
-            generator.GenerateAll();
-            MessageBox.Show("Alle pdfs gegenereerd!");
+            var pdfs = Directory.GetFiles("PDFs");
+            if (pdfs.Length != 0)
+            {
+                var result = MessageBox.Show("Er zijn al bingokaarten aanwezig. Deze worden overschreven als je nieuwe inlaadt. Doorgaan?", "Overschrijven bingokaarten", MessageBoxButtons.YesNo);
+                
+                if (result == DialogResult.Yes)
+                {
+                    using (OpenFileDialog ofd = new OpenFileDialog())
+                    {
+                        ofd.Filter = "Excel sheets (*.xlsx;*.xls)|*.xlsx;*.xls";
+                        ofd.RestoreDirectory = true;
+
+                        if (ofd.ShowDialog() == DialogResult.OK)
+                        {
+                            progressBar1.Visible = true;
+                            await Task.Run(() => generator.GenerateAll(ofd.FileName));
+                            progressBar1.Visible = false;
+                            checkPresentPdfs();
+                            MessageBox.Show("Alle pdfs gegenereerd!");
+                        }
+                    }
+                }
+            }
         }
 
         private void setBingoNumbers()
@@ -62,7 +86,7 @@ namespace KluimBingoGUI
             var pdfs = Directory.GetFiles("PDFs");
             if (pdfs.Length != 0)
             {
-                button1.Enabled = false;
+                importedPdfs.Items.Clear();
                 foreach (var item in pdfs)
                     importedPdfs.Items.Add(item.Replace("PDFs\\", ""));
             }
@@ -214,9 +238,14 @@ namespace KluimBingoGUI
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            drawnNumbers = new List<string>();
-            for (int i = 0; i < 75; i++)
-                table1.Controls[i].BackColor = controlColor;
+            var result = MessageBox.Show("Weet je zeker dat je alle velden wilt resetten?", "Resetten?", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                drawnNumbers = new List<string>();
+                for (int i = 0; i < 75; i++)
+                    table1.Controls[i].BackColor = controlColor;
+            }
         }
     }
 }

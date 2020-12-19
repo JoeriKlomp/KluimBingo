@@ -18,23 +18,25 @@ namespace BingoKaartGenerator
         public BingoKaartGenerator()
         {
             r = new Random();
-
             converter = new HtmlToPdf();
             converter.Options.PdfPageSize = PdfPageSize.A4;
             converter.Options.PdfPageOrientation = PdfPageOrientation.Portrait;
             converter.Options.WebPageWidth = 0;
 
             templateHtml = File.ReadAllText("Template\\bingo-template.html");
-            readExcelSheet();
         }
 
-        public void GenerateAll()
+        public void GenerateAll(string filePath)
         {
+            readExcelSheet(filePath);
             for (int i = 0; i < participants.Count; i++)
             {
                 var person = participants[i].ItemArray[0].ToString();
-                var amount = int.Parse(participants[i].ItemArray[1].ToString());
+                var result = int.TryParse(participants[i].ItemArray[1].ToString(), out var amount);
 
+                if (!result)
+                    continue;
+                
                 if (amount > 1)
                 {
                     for (int j = 1; j <= amount; j++)
@@ -74,9 +76,9 @@ namespace BingoKaartGenerator
             Console.WriteLine($"Pdf voor {person} gereed");
         }
 
-        public void readExcelSheet()
+        public void readExcelSheet(string filePath)
         {
-            using (var stream = File.Open("Excel\\test-excel.xlsx", FileMode.Open, FileAccess.Read))
+            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {

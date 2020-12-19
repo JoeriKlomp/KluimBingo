@@ -118,6 +118,7 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.checkBingoButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.table1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1278,11 +1279,21 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(211, 12);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(322, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 8;
+            this.progressBar1.Visible = false;
+            // 
             // KluimBingo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 655);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.checkBingoButton);
             this.Controls.Add(this.groupBox2);
@@ -1396,6 +1407,7 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Button checkBingoButton;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
